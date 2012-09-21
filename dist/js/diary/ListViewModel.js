@@ -33,7 +33,7 @@ define('diary/ListViewModel', ['common/settings', 'diary/ViewModel'], function(s
     ListViewModel.prototype.newDiary = function() {
       var diary;
       diary = new ViewModel({
-        title: '新しい日記'
+        title: 'New Article'
       });
       this.diaries.push(diary);
       diary.create();

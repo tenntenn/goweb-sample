@@ -21,7 +21,7 @@ define('diary/ListViewModel',
 
             newDiary: ()=>
                 diary = new ViewModel(
-                    title: '新しい日記'
+                    title: 'New Article'
                 )
                 @diaries.push(diary)
                 diary.create()
