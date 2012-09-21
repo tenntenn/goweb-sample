@@ -1,0 +1,18 @@
+{{define "content"}}
+<!-- ko if:selected() -->
+<div class="well" data-bind="with: selected">
+    <h1>
+      <input id="diary-title-input"
+             type="text"
+             data-bind="value: title, event:{blur: save}"/>
+    </h1>
+
+    <textarea id="diary-content-input"
+           data-bind="value: content, event:{blur: save}">
+    </textarea>
+</div>
+<!--/ko-->
+<!-- ko ifnot: selected() -->
+<h1>日記が選択されていません。</h1>
+<!-- /ko -->
+{{end}}

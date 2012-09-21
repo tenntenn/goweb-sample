@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <link rel="stylesheet" href="css/main.css"/>
+        <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="lib/bootstrap/css/bootstrap-responsive.min.css" />
+    </head>
+    <body>
+
+    
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <button type="button"class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="brand" href="/">My Diary</a>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span3">
+                
+    <div class="well sidebar-nav">
+        <ul class="nav nav-list">
+            <li class="nav-header">日記一覧</li>
+            <ul id="catalog-list" class="nav nav-list" data-bind="foreach: diaries">
+        
+                <!-- ko if: $parent.isSelected($data) -->
+                <li class="active">
+                    <a href="#" data-bind="text: title"></a>
+                </li>
+                <!-- /ko -->
+
+                <!-- ko ifnot: $parent.isSelected($data) -->
+                <li>
+                    <a href="#" data-bind="text: title, click: $parent.select.bind($parent), clickBubble: false"></a>
+                </li>
+                <!-- /ko -->
+       </ul> 
+
+        <!-- 削除ボタン -->
+        <a class="btn btn-danger btn-mini" href="#" data-bind="event: {click: delDiary}">
+            <i class="icon-trash icon-white">
+            </i>削除
+        </a>
+
+        <!-- 新規ボタン -->
+        <a class="btn btn-primary btn-mini" href="#" data-bind="event: {click: newDiary}">
+            <i class="icon-plus icon-white">
+            </i>新規
+        </a>
+    </div>
+
+            </div>
+            <div class="span8">
+                
+<!-- ko if:selected() -->
+<div class="well" data-bind="with: selected">
+    <h1>
+      <input id="diary-title-input"
+             type="text"
+             data-bind="value: title, event:{blur: save}"/>
+    </h1>
+
+    <textarea id="diary-content-input"
+           data-bind="value: content, event:{blur: save}">
+    </textarea>
+</div>
+<!--/ko-->
+<!-- ko ifnot: selected() -->
+<h1>日記が選択されていません。</h1>
+<!-- /ko -->
+        
+            </div>
+        </div>
+    </div>
+
+    
+    <script src="lib/bootstrap/js/bootstrap.min.js">
+    </script>
+    <script src="lib/jquery-1.8.1.min.js">
+    </script>
+    <script src="lib/jquery.json-2.3.min.js">
+    </script>
+    <script src="lib/xdr.js">
+    </script>
+    <script src="lib/knockout-2.1.0.js">
+    </script>
+    <script src="lib/msgpack.js">
+    </script>
+    <script data-main="js/main.js" src="lib/require.js">
+    </script>
+
+    </body>
+</html>

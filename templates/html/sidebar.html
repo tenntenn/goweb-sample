@@ -1,0 +1,32 @@
+{{define "sidebar"}}
+    <div class="well sidebar-nav">
+        <ul class="nav nav-list">
+            <li class="nav-header">日記一覧</li>
+            <ul id="catalog-list" class="nav nav-list" data-bind="foreach: diaries">
+        
+                <!-- ko if: $parent.isSelected($data) -->
+                <li class="active">
+                    <a href="#" data-bind="text: title"></a>
+                </li>
+                <!-- /ko -->
+
+                <!-- ko ifnot: $parent.isSelected($data) -->
+                <li>
+                    <a href="#" data-bind="text: title, click: $parent.select.bind($parent), clickBubble: false"></a>
+                </li>
+                <!-- /ko -->
+       </ul> 
+
+        <!-- 削除ボタン -->
+        <a class="btn btn-danger btn-mini" href="#" data-bind="event: {click: delDiary}">
+            <i class="icon-trash icon-white">
+            </i>削除
+        </a>
+
+        <!-- 新規ボタン -->
+        <a class="btn btn-primary btn-mini" href="#" data-bind="event: {click: newDiary}">
+            <i class="icon-plus icon-white">
+            </i>新規
+        </a>
+    </div>
+{{end}}
